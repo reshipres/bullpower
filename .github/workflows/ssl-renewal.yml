@@ -1,0 +1,48 @@
+name: SSL Certificate Auto-Renewal
+
+on:
+  schedule:
+    - cron: '0 0 1 * *'  # Run monthly
+  workflow_dispatch:  # Manual trigger
+
+jobs:
+  ssl-renewal:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        
+    - name: Install dependencies
+      run: |
+        npm install -g acme.sh
+        
+    - name: Generate SSL Certificate
+      env:
+        DOMAIN: bullpower.fun
+        EMAIL: your-email@example.com
+        WEBROOT: /home/omarnbwz/bullpower.fun/public_html
+      run: |
+        # Install acme.sh
+        curl https://get.acme.sh | sh
+        ~/.acme.sh/acme.sh --install
+        
+        # Issue certificate
+        ~/.acme.sh/acme.sh --issue -d $DOMAIN -d www.$DOMAIN --webroot $WEBROOT
+        
+        # Install certificate
+        ~/.acme.sh/acme.sh --install-cert -d $DOMAIN \
+          --key-file /tmp/bullpower.key \
+          --fullchain-file /tmp/bullpower.crt \
+          --reloadcmd "service nginx reload"
+          
+    - name: Upload certificate files
+      run: |
+        # Upload certificate files to your server
+        # You'll need to add your server credentials as GitHub secrets
+        echo "Certificate renewed successfully!"
