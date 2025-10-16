@@ -5,12 +5,12 @@
 }
 
 body {
-    font-family: 'Arial Black', 'Arial Bold', sans-serif;
-    background: #0a0000;
+    font-family: 'Arial', sans-serif;
+    background: #0f0f1e;
     background-image: 
-        radial-gradient(circle at 20% 50%, rgba(255, 0, 0, 0.2) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(200, 0, 0, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 40% 20%, rgba(255, 50, 50, 0.1) 0%, transparent 50%);
+        radial-gradient(circle at 20% 50%, rgba(100, 100, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(150, 100, 255, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 40% 20%, rgba(200, 150, 255, 0.06) 0%, transparent 50%);
     color: #fff;
     min-height: 100vh;
     padding: 2rem 0;
@@ -31,16 +31,16 @@ body {
     position: fixed;
     top: 2rem;
     right: 2rem;
-    color: #ff0000;
+    color: #88aaff;
     transition: all 0.3s ease;
     z-index: 100;
-    filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.5));
+    filter: drop-shadow(0 0 10px rgba(136, 170, 255, 0.5));
 }
 
 .twitter-icon:hover {
-    color: #ff3333;
+    color: #aaccff;
     transform: scale(1.2);
-    filter: drop-shadow(0 0 20px rgba(255, 0, 0, 0.8));
+    filter: drop-shadow(0 0 20px rgba(136, 170, 255, 0.8));
 }
 
 /* Logo - Round */
@@ -53,16 +53,16 @@ body {
     height: 250px;
     object-fit: cover;
     border-radius: 50%;
-    border: 5px solid #ff0000;
-    filter: drop-shadow(0 0 40px rgba(255, 0, 0, 0.6));
+    border: 4px solid #6688ff;
+    filter: drop-shadow(0 0 30px rgba(102, 136, 255, 0.4));
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .bull-logo:hover {
     transform: scale(1.05);
-    border-color: #ff3333;
-    filter: drop-shadow(0 0 60px rgba(255, 0, 0, 0.9));
+    border-color: #88aaff;
+    filter: drop-shadow(0 0 40px rgba(136, 170, 255, 0.6));
 }
 
 /* Title */
@@ -70,20 +70,63 @@ body {
     font-size: 5rem;
     font-weight: 900;
     margin-bottom: 1rem;
-    background: linear-gradient(45deg, #ff0000, #ff3333, #cc0000, #ff0000);
+    background: linear-gradient(45deg, #6688ff, #88aaff, #aaccff, #6688ff);
     background-size: 300% 300%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    filter: drop-shadow(0 0 40px rgba(255, 0, 0, 0.8));
+    filter: drop-shadow(0 0 30px rgba(102, 136, 255, 0.5));
     letter-spacing: 0.1em;
 }
 
 .subtitle {
     font-size: 1.2rem;
-    color: #ff3333;
-    margin-bottom: 3rem;
+    color: #aaccff;
+    margin-bottom: 2rem;
     letter-spacing: 0.05em;
+    font-weight: normal;
+}
+
+/* Twitter CTA */
+.twitter-cta {
+    background: linear-gradient(135deg, rgba(102, 136, 255, 0.15), rgba(136, 170, 255, 0.1));
+    border: 2px solid #6688ff;
+    border-radius: 20px;
+    padding: 2rem;
+    margin: 2rem 0 3rem;
+    box-shadow: 0 0 30px rgba(102, 136, 255, 0.2);
+}
+
+.twitter-cta h3 {
+    font-size: 1.8rem;
+    color: #88aaff;
+    margin-bottom: 1rem;
+}
+
+.twitter-cta p {
+    font-size: 1.1rem;
+    color: #ccc;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.twitter-btn {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background: linear-gradient(135deg, #6688ff, #88aaff);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(102, 136, 255, 0.3);
+}
+
+.twitter-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(102, 136, 255, 0.5);
+    background: linear-gradient(135deg, #88aaff, #aaccff);
 }
 
 /* Story Section */
@@ -93,8 +136,6 @@ body {
 }
 
 .story-chapter {
-    background: rgba(139, 0, 0, 0.3);
-    border: 2px solid #ff0000;
     border-radius: 15px;
     padding: 2rem;
     margin-bottom: 2rem;
@@ -103,37 +144,116 @@ body {
     overflow: hidden;
 }
 
-.story-chapter.open:hover {
-    background: rgba(139, 0, 0, 0.5);
-    border-color: #ff3333;
-    transform: translateX(5px);
-    box-shadow: 0 0 30px rgba(255, 0, 0, 0.4);
-}
-
 .story-chapter h2 {
-    color: #ff3333;
     font-size: 1.8rem;
     margin-bottom: 1rem;
-    text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
 }
 
 .story-chapter p {
     font-size: 1.1rem;
     line-height: 1.6;
-    color: #fff;
-    font-family: Arial, sans-serif;
+    color: #ddd;
+}
+
+/* Chapter Colors */
+.chapter-blue {
+    background: rgba(66, 99, 255, 0.15);
+    border: 2px solid #4263ff;
+}
+
+.chapter-blue h2 {
+    color: #6688ff;
+    text-shadow: 0 0 10px rgba(102, 136, 255, 0.5);
+}
+
+.chapter-blue.open:hover {
+    background: rgba(66, 99, 255, 0.25);
+    border-color: #6688ff;
+    box-shadow: 0 0 20px rgba(102, 136, 255, 0.3);
+}
+
+.chapter-purple {
+    background: rgba(138, 66, 255, 0.15);
+    border: 2px solid #8a42ff;
+}
+
+.chapter-purple h2 {
+    color: #a966ff;
+    text-shadow: 0 0 10px rgba(169, 102, 255, 0.5);
+}
+
+.chapter-purple.open:hover {
+    background: rgba(138, 66, 255, 0.25);
+    border-color: #a966ff;
+    box-shadow: 0 0 20px rgba(169, 102, 255, 0.3);
+}
+
+.chapter-gold {
+    background: rgba(255, 183, 66, 0.15);
+    border: 2px solid #ffb742;
+}
+
+.chapter-gold h2 {
+    color: #ffc966;
+    text-shadow: 0 0 10px rgba(255, 201, 102, 0.5);
+}
+
+.chapter-gold.open:hover {
+    background: rgba(255, 183, 66, 0.25);
+    border-color: #ffc966;
+    box-shadow: 0 0 20px rgba(255, 201, 102, 0.3);
+}
+
+.chapter-orange {
+    background: rgba(255, 119, 66, 0.15);
+    border: 2px solid #ff7742;
+}
+
+.chapter-orange h2 {
+    color: #ff9966;
+    text-shadow: 0 0 10px rgba(255, 153, 102, 0.5);
+}
+
+.chapter-red {
+    background: rgba(255, 66, 66, 0.15);
+    border: 2px solid #ff4242;
+}
+
+.chapter-red h2 {
+    color: #ff6666;
+    text-shadow: 0 0 10px rgba(255, 102, 102, 0.5);
+}
+
+.chapter-cyan {
+    background: rgba(66, 211, 255, 0.15);
+    border: 2px solid #42d3ff;
+}
+
+.chapter-cyan h2 {
+    color: #66ddff;
+    text-shadow: 0 0 10px rgba(102, 221, 255, 0.5);
+}
+
+.chapter-green {
+    background: rgba(66, 255, 119, 0.15);
+    border: 2px solid #42ff77;
+}
+
+.chapter-green h2 {
+    color: #66ff99;
+    text-shadow: 0 0 10px rgba(102, 255, 153, 0.5);
 }
 
 /* Locked Chapters */
 .story-chapter.locked {
     cursor: pointer;
-    background: rgba(0, 0, 0, 0.8);
-    border: 2px solid #666;
+    background: rgba(50, 50, 70, 0.3);
+    border: 2px solid #555;
 }
 
 .story-chapter.locked:hover {
-    border-color: #ff0000;
-    box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+    border-color: #6688ff;
+    box-shadow: 0 0 20px rgba(102, 136, 255, 0.2);
 }
 
 .locked-overlay {
@@ -188,42 +308,36 @@ body {
     }
 }
 
-.story-chapter.unlocked {
-    background: rgba(139, 0, 0, 0.3);
-    border-color: #ff0000;
-    box-shadow: 0 0 40px rgba(255, 0, 0, 0.6);
-}
-
 /* Moral Section */
 .moral {
-    background: linear-gradient(135deg, rgba(255, 0, 0, 0.2), rgba(139, 0, 0, 0.3));
-    border: 3px solid #ff0000;
+    background: linear-gradient(135deg, rgba(102, 136, 255, 0.15), rgba(136, 170, 255, 0.1));
+    border: 3px solid #6688ff;
     border-radius: 20px;
     padding: 2.5rem;
     margin: 3rem 0;
-    box-shadow: 0 0 40px rgba(255, 0, 0, 0.5);
+    box-shadow: 0 0 30px rgba(102, 136, 255, 0.2);
 }
 
 .moral h2 {
-    color: #ff0000;
+    color: #88aaff;
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
-    text-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+    text-shadow: 0 0 15px rgba(136, 170, 255, 0.5);
 }
 
 .moral p {
     font-size: 1.2rem;
     line-height: 1.8;
     margin-bottom: 1rem;
-    font-family: Arial, sans-serif;
+    color: #ddd;
 }
 
 .highlight {
-    color: #ff3333;
+    color: #aaccff;
     font-size: 1.5rem !important;
     font-weight: 900;
     margin-top: 1.5rem !important;
-    text-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
+    text-shadow: 0 0 15px rgba(170, 204, 255, 0.5);
 }
 
 /* Buttons */
@@ -249,28 +363,26 @@ body {
 }
 
 .btn-pump {
-    background: linear-gradient(135deg, #ff0000, #cc0000);
+    background: linear-gradient(135deg, #6688ff, #88aaff);
     color: white;
-    box-shadow: 0 10px 30px rgba(255, 0, 0, 0.4);
+    box-shadow: 0 10px 30px rgba(102, 136, 255, 0.3);
 }
 
 .btn-pump:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(255, 0, 0, 0.6);
+    box-shadow: 0 15px 40px rgba(102, 136, 255, 0.5);
 }
 
 .btn-hodl {
-    background: linear-gradient(135deg, #8b0000, #5a0000);
+    background: linear-gradient(135deg, #8a42ff, #a966ff);
     color: white;
-    box-shadow: 0 10px 30px rgba(139, 0, 0, 0.4);
-    border: 3px solid #ff0000;
+    box-shadow: 0 10px 30px rgba(138, 66, 255, 0.3);
+    border: 3px solid #a966ff;
 }
 
 .btn-hodl:hover {
     transform: translateY(-5px);
-    background: linear-gradient(135deg, #a00000, #6b0000);
-    box-shadow: 0 15px 40px rgba(139, 0, 0, 0.6);
-    border-color: #ff3333;
+    box-shadow: 0 15px 40px rgba(138, 66, 255, 0.5);
 }
 
 /* Explosion Effect */
@@ -315,6 +427,23 @@ body {
     .bull-logo {
         width: 180px;
         height: 180px;
+    }
+    
+    .twitter-cta {
+        padding: 1.5rem;
+    }
+    
+    .twitter-cta h3 {
+        font-size: 1.4rem;
+    }
+    
+    .twitter-cta p {
+        font-size: 1rem;
+    }
+    
+    .twitter-btn {
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
     }
     
     .story-chapter {
@@ -375,6 +504,10 @@ body {
     .bull-logo {
         width: 150px;
         height: 150px;
+    }
+    
+    .twitter-cta h3 {
+        font-size: 1.2rem;
     }
     
     .story-chapter {
