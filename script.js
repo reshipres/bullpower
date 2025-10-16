@@ -2,10 +2,6 @@
 const pumpBtn = document.getElementById('pumpBtn');
 const hodlBtn = document.getElementById('hodlBtn');
 const explosion = document.getElementById('explosion');
-const lockedChapters = document.querySelectorAll('.story-chapter.locked');
-
-// Track unlocked chapters
-let unlockedChapters = new Set();
 
 // PUMP button effect - simple
 pumpBtn.addEventListener('click', function() {
@@ -17,51 +13,6 @@ pumpBtn.addEventListener('click', function() {
 hodlBtn.addEventListener('click', function() {
     createExplosion('💎', 20, '#8b0000');
     flashScreen('#8b0000');
-});
-
-// Locked chapter click - reveal randomly
-lockedChapters.forEach(chapter => {
-    chapter.addEventListener('click', function() {
-        if (!this.classList.contains('unlocked')) {
-            unlockChapter(this);
-        }
-    });
-});
-
-// Unlock chapter function
-function unlockChapter(chapter) {
-    const chapterNum = chapter.getAttribute('data-chapter');
-    
-    if (unlockedChapters.has(chapterNum)) {
-        return; // Already unlocked
-    }
-    
-    // Add unlocked class
-    chapter.classList.remove('locked');
-    chapter.classList.add('unlocked');
-    unlockedChapters.add(chapterNum);
-    
-    // Create explosion effect
-    createExplosion('🔓', 15, '#ff0000');
-    createExplosion('⚡', 15, '#ffd700');
-    
-    // Flash screen
-    flashScreen('#ff0000');
-    
-    // Store in localStorage
-    localStorage.setItem(`chapter_${chapterNum}_unlocked`, 'true');
-}
-
-// Check localStorage on page load
-window.addEventListener('DOMContentLoaded', function() {
-    lockedChapters.forEach(chapter => {
-        const chapterNum = chapter.getAttribute('data-chapter');
-        if (localStorage.getItem(`chapter_${chapterNum}_unlocked`) === 'true') {
-            chapter.classList.remove('locked');
-            chapter.classList.add('unlocked');
-            unlockedChapters.add(chapterNum);
-        }
-    });
 });
 
 // Create particle explosion
@@ -132,5 +83,14 @@ if (bullLogo) {
     });
 }
 
+// Twitter locked chapters - add click effect
+const twitterLockedChapters = document.querySelectorAll('.twitter-locked');
+twitterLockedChapters.forEach(chapter => {
+    chapter.addEventListener('click', function(e) {
+        // Create small explosion on click
+        createExplosion('🔓', 8, '#ff0000');
+    });
+});
+
 console.log('🐂 BULLPOWER - 从心碎到登月！ 🚀');
-console.log('点击锁定的章节揭示传奇故事...');
+console.log('点击章节4-7前往Twitter查看完整故事...');
