@@ -136,26 +136,43 @@ body {
     box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
 }
 
-/* Twitter Locked Chapters */
-.story-chapter.twitter-locked {
+/* Compact Locked Chapters */
+.locked-chapters-compact {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 2rem 0;
+}
+
+.locked-mini {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid #666;
+    border-radius: 10px;
     text-decoration: none;
-    display: block;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(20, 0, 0, 0.9));
-    border: 2px solid #ff0000;
+    color: #999;
+    transition: all 0.3s ease;
+    font-size: 1rem;
 }
 
-.story-chapter.twitter-locked:hover {
-    border-color: #ff3333;
-    box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
-    transform: translateY(-3px);
-    background: linear-gradient(135deg, rgba(20, 0, 0, 0.9), rgba(40, 0, 0, 0.95));
+.locked-mini:hover {
+    border-color: #ff0000;
+    background: rgba(20, 0, 0, 0.8);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
 }
 
-.twitter-hint {
-    margin-top: 1rem;
-    color: #ff6666;
-    font-size: 0.9rem;
-    font-style: italic;
+.lock-mini {
+    font-size: 1.2rem;
+}
+
+.chapter-name {
+    font-weight: bold;
 }
 
 .locked-overlay {
@@ -248,105 +265,27 @@ body {
     text-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
 }
 
-/* Twitter CTA Section */
-.twitter-cta {
-    background: linear-gradient(135deg, rgba(255, 0, 0, 0.2), rgba(139, 0, 0, 0.3));
-    border: 3px solid #ff0000;
-    border-radius: 25px;
-    padding: 3rem;
-    margin: 3rem 0;
+/* Simple Twitter Text */
+.twitter-simple-text {
     text-align: center;
-    box-shadow: 0 0 50px rgba(255, 0, 0, 0.4);
-    position: relative;
-    overflow: hidden;
-}
-
-.twitter-cta::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(45deg, transparent, rgba(255, 0, 0, 0.1), transparent);
-    animation: shine 3s infinite;
-}
-
-@keyframes shine {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-.twitter-cta h3 {
-    font-size: 2.2rem;
-    color: #ff3333;
-    margin-bottom: 1.5rem;
-    position: relative;
-    z-index: 1;
-    text-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
-}
-
-.twitter-cta p {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     line-height: 1.8;
-    margin-bottom: 2rem;
-    position: relative;
-    z-index: 1;
+    color: #ddd;
+    margin: 2rem 0;
+    padding: 0 2rem;
 }
 
-.twitter-cta-btn {
-    display: inline-block;
-    padding: 1.5rem 3rem;
-    background: linear-gradient(135deg, #ff0000, #cc0000);
-    color: white;
+.twitter-link {
+    color: #ff3333;
     text-decoration: none;
-    border-radius: 50px;
-    font-weight: 900;
-    font-size: 1.3rem;
+    font-weight: bold;
     transition: all 0.3s ease;
-    box-shadow: 0 10px 30px rgba(255, 0, 0, 0.4);
-    position: relative;
-    z-index: 1;
-    border: 2px solid #ff3333;
+    border-bottom: 2px solid transparent;
 }
 
-.twitter-cta-btn:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 15px 40px rgba(255, 0, 0, 0.6);
-    background: linear-gradient(135deg, #ff3333, #ff0000);
-}
-
-.twitter-icon-inline {
-    margin-right: 0.5rem;
-}
-
-.arrow {
-    margin-left: 0.5rem;
-    display: inline-block;
-    transition: transform 0.3s ease;
-}
-
-.twitter-cta-btn:hover .arrow {
-    transform: translateX(5px);
-}
-
-.twitter-features {
-    display: flex;
-    gap: 2rem;
-    justify-content: center;
-    margin-top: 2rem;
-    flex-wrap: wrap;
-    position: relative;
-    z-index: 1;
-}
-
-.feature {
-    background: rgba(0, 0, 0, 0.5);
-    padding: 0.8rem 1.5rem;
-    border-radius: 20px;
-    border: 1px solid #ff0000;
-    font-size: 1rem;
-    color: #fff;
+.twitter-link:hover {
+    color: #ff6666;
+    border-bottom-color: #ff3333;
 }
 
 /* Buttons */
@@ -468,30 +407,14 @@ body {
         font-size: 1rem;
     }
     
-    .twitter-cta {
-        padding: 2rem;
-    }
-    
-    .twitter-cta h3 {
-        font-size: 1.6rem;
-    }
-    
-    .twitter-cta p {
+    .twitter-simple-text {
         font-size: 1rem;
+        padding: 0 1rem;
     }
     
-    .twitter-cta-btn {
-        padding: 1.2rem 2rem;
-        font-size: 1.1rem;
-    }
-    
-    .twitter-features {
-        gap: 1rem;
-    }
-    
-    .feature {
+    .locked-mini {
+        padding: 0.6rem 1.2rem;
         font-size: 0.9rem;
-        padding: 0.6rem 1rem;
     }
     
     .buttons {

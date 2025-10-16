@@ -75,7 +75,7 @@ function flashScreen(color) {
     }, 450);
 }
 
-// Bull logo simple hover
+// Bull logo click
 const bullLogo = document.querySelector('.bull-logo');
 if (bullLogo) {
     bullLogo.addEventListener('click', function() {
@@ -83,14 +83,12 @@ if (bullLogo) {
     });
 }
 
-// Twitter locked chapters - add click effect
-const twitterLockedChapters = document.querySelectorAll('.twitter-locked');
-twitterLockedChapters.forEach(chapter => {
-    chapter.addEventListener('click', function(e) {
-        // Create small explosion on click
-        createExplosion('🔓', 8, '#ff0000');
+// Compact locked chapters - click effect
+const lockedMinis = document.querySelectorAll('.locked-mini');
+lockedMinis.forEach(mini => {
+    mini.addEventListener('click', function(e) {
+        createExplosion('🔓', 6, '#ff0000');
     });
 });
 
 console.log('🐂 BULLPOWER - 从心碎到登月！ 🚀');
-console.log('点击章节4-7前往Twitter查看完整故事...');
