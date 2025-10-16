@@ -39,11 +39,11 @@ body {
 
 .twitter-icon:hover {
     color: #ff3333;
-    transform: scale(1.2) rotate(5deg);
+    transform: scale(1.2);
     filter: drop-shadow(0 0 20px rgba(255, 0, 0, 0.8));
 }
 
-/* Logo - КРУГЛАЯ! */
+/* Logo - Round */
 .logo {
     margin-bottom: 2rem;
 }
@@ -55,45 +55,35 @@ body {
     border-radius: 50%;
     border: 5px solid #ff0000;
     filter: drop-shadow(0 0 40px rgba(255, 0, 0, 0.6));
-    animation: float 4s ease-in-out infinite;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .bull-logo:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
     border-color: #ff3333;
     filter: drop-shadow(0 0 60px rgba(255, 0, 0, 0.9));
-}
-
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-15px);
-    }
 }
 
 /* Title */
 .title {
     font-size: 5rem;
     font-weight: 900;
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
     background: linear-gradient(45deg, #ff0000, #ff3333, #cc0000, #ff0000);
     background-size: 300% 300%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    animation: gradientShift 3s ease infinite;
     filter: drop-shadow(0 0 40px rgba(255, 0, 0, 0.8));
     letter-spacing: 0.1em;
 }
 
-@keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+.subtitle {
+    font-size: 1.2rem;
+    color: #ff3333;
+    margin-bottom: 3rem;
+    letter-spacing: 0.05em;
 }
 
 /* Story Section */
@@ -109,12 +99,14 @@ body {
     padding: 2rem;
     margin-bottom: 2rem;
     transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
-.story-chapter:hover {
+.story-chapter.open:hover {
     background: rgba(139, 0, 0, 0.5);
     border-color: #ff3333;
-    transform: translateX(10px);
+    transform: translateX(5px);
     box-shadow: 0 0 30px rgba(255, 0, 0, 0.4);
 }
 
@@ -130,6 +122,76 @@ body {
     line-height: 1.6;
     color: #fff;
     font-family: Arial, sans-serif;
+}
+
+/* Locked Chapters */
+.story-chapter.locked {
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid #666;
+}
+
+.story-chapter.locked:hover {
+    border-color: #ff0000;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+}
+
+.locked-overlay {
+    text-align: center;
+    padding: 2rem;
+}
+
+.lock-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    animation: lockPulse 2s infinite;
+}
+
+@keyframes lockPulse {
+    0%, 100% { transform: scale(1); opacity: 0.6; }
+    50% { transform: scale(1.1); opacity: 1; }
+}
+
+.locked-overlay h2 {
+    color: #999;
+    font-size: 1.5rem;
+}
+
+.locked-text {
+    color: #666;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
+.hidden-content {
+    display: none;
+}
+
+.story-chapter.unlocked .locked-overlay {
+    display: none;
+}
+
+.story-chapter.unlocked .hidden-content {
+    display: block;
+    animation: reveal 0.8s ease-out;
+}
+
+@keyframes reveal {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.story-chapter.unlocked {
+    background: rgba(139, 0, 0, 0.3);
+    border-color: #ff0000;
+    box-shadow: 0 0 40px rgba(255, 0, 0, 0.6);
 }
 
 /* Moral Section */
@@ -180,76 +242,34 @@ body {
     border: none;
     border-radius: 20px;
     cursor: pointer;
-    transition: all 0.4s ease;
+    transition: all 0.3s ease;
     text-transform: uppercase;
-    position: relative;
-    overflow: hidden;
     letter-spacing: 0.1em;
     min-width: 280px;
-}
-
-.btn::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s ease, height 0.6s ease;
-}
-
-.btn:active::before {
-    width: 400px;
-    height: 400px;
 }
 
 .btn-pump {
     background: linear-gradient(135deg, #ff0000, #cc0000);
     color: white;
-    box-shadow: 
-        0 0 40px rgba(255, 0, 0, 0.6),
-        0 0 80px rgba(255, 0, 0, 0.4);
-    animation: pumpPulse 2s ease-in-out infinite;
+    box-shadow: 0 10px 30px rgba(255, 0, 0, 0.4);
 }
 
 .btn-pump:hover {
-    transform: translateY(-10px) scale(1.05);
-    box-shadow: 
-        0 0 60px rgba(255, 0, 0, 0.9),
-        0 0 120px rgba(255, 0, 0, 0.6);
-}
-
-@keyframes pumpPulse {
-    0%, 100% {
-        box-shadow: 
-            0 0 40px rgba(255, 0, 0, 0.6),
-            0 0 80px rgba(255, 0, 0, 0.4);
-    }
-    50% {
-        box-shadow: 
-            0 0 60px rgba(255, 0, 0, 0.8),
-            0 0 100px rgba(255, 0, 0, 0.5);
-    }
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(255, 0, 0, 0.6);
 }
 
 .btn-hodl {
     background: linear-gradient(135deg, #8b0000, #5a0000);
     color: white;
-    box-shadow: 
-        0 0 40px rgba(139, 0, 0, 0.6),
-        0 0 80px rgba(139, 0, 0, 0.4);
+    box-shadow: 0 10px 30px rgba(139, 0, 0, 0.4);
     border: 3px solid #ff0000;
 }
 
 .btn-hodl:hover {
-    transform: translateY(-10px) scale(1.05);
+    transform: translateY(-5px);
     background: linear-gradient(135deg, #a00000, #6b0000);
-    box-shadow: 
-        0 0 60px rgba(139, 0, 0, 0.9),
-        0 0 120px rgba(139, 0, 0, 0.6);
+    box-shadow: 0 15px 40px rgba(139, 0, 0, 0.6);
     border-color: #ff3333;
 }
 
@@ -282,28 +302,14 @@ body {
     }
 }
 
-/* Screen shake */
-@keyframes shake {
-    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    10% { transform: translate(-10px, -10px) rotate(-2deg); }
-    20% { transform: translate(10px, 10px) rotate(2deg); }
-    30% { transform: translate(-10px, 10px) rotate(-2deg); }
-    40% { transform: translate(10px, -10px) rotate(2deg); }
-    50% { transform: translate(-10px, -10px) rotate(-2deg); }
-    60% { transform: translate(10px, 10px) rotate(2deg); }
-    70% { transform: translate(-10px, 10px) rotate(-2deg); }
-    80% { transform: translate(10px, -10px) rotate(2deg); }
-    90% { transform: translate(-10px, -10px) rotate(-2deg); }
-}
-
-body.shake {
-    animation: shake 0.5s;
-}
-
 /* Responsive */
 @media (max-width: 768px) {
     .title {
         font-size: 3rem;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
     }
     
     .bull-logo {
@@ -321,6 +327,10 @@ body.shake {
     
     .story-chapter p {
         font-size: 1rem;
+    }
+    
+    .lock-icon {
+        font-size: 3rem;
     }
     
     .moral {
@@ -358,6 +368,10 @@ body.shake {
         font-size: 2.2rem;
     }
     
+    .subtitle {
+        font-size: 0.9rem;
+    }
+    
     .bull-logo {
         width: 150px;
         height: 150px;
@@ -373,6 +387,10 @@ body.shake {
     
     .story-chapter p {
         font-size: 0.9rem;
+    }
+    
+    .lock-icon {
+        font-size: 2.5rem;
     }
     
     .moral h2 {
