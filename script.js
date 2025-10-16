@@ -1,149 +1,148 @@
-// Meme phrases for the bull
-const memePhrases = [
-    "TO THE MOON! 🚀",
-    "DIAMOND HANDS! 💎",
-    "HODL! 💪",
-    "BULLISH AF! 🐂",
-    "LFG!!! 🔥",
-    "WEN LAMBO? 🏎️",
-    "GM BULLS! ☀️",
-    "WAGMI! 🌟",
-    "NEVER SELLING! ❌",
-    "ONLY UP! 📈",
-    "BUY THE DIP! 💰",
-    "BULLS NEVER SLEEP! 😤",
-    "100X INCOMING! 💯",
-    "THIS IS THE WAY! ✨",
-    "POWER LEVEL: MAXIMUM! ⚡",
-    "BEAR MARKET? NEVER HEARD OF IT! 🐂",
-    "UNSTOPPABLE! 💪",
-    "WE'RE SO EARLY! ⏰",
-    "BULLPOWER TO INFINITY! ♾️",
-    "NO BRAKES ON THIS BULL! 🚂"
-];
+// Get elements
+const pumpBtn = document.getElementById('pumpBtn');
+const hodlBtn = document.getElementById('hodlBtn');
+const explosion = document.getElementById('explosion');
+const body = document.body;
 
-// Click on the bull
-const bullMascot = document.getElementById('bullMascot');
-const memePhrase = document.getElementById('memePhrase');
-
-bullMascot.addEventListener('click', function() {
-    // Add shake animation
-    this.classList.add('shake');
-    setTimeout(() => {
-        this.classList.remove('shake');
-    }, 500);
+// PUMP button effect
+pumpBtn.addEventListener('click', function() {
+    // Screen shake
+    body.classList.add('shake');
+    setTimeout(() => body.classList.remove('shake'), 500);
     
-    // Show random phrase
-    const randomPhrase = memePhrases[Math.floor(Math.random() * memePhrases.length)];
-    memePhrase.textContent = randomPhrase;
-    memePhrase.classList.add('show');
+    // Create rocket explosion
+    createExplosion('🚀', 30, '#ff0000');
     
-    setTimeout(() => {
-        memePhrase.classList.remove('show');
-    }, 2000);
+    // Sound effect (visual representation)
+    flashScreen('#ff0000');
 });
 
-// TO THE MOON Button
-const moonButton = document.querySelector('.btn-primary');
-moonButton.addEventListener('click', function() {
-    // Create rocket effects
-    for (let i = 0; i < 10; i++) {
+// HODL button effect
+hodlBtn.addEventListener('click', function() {
+    // Screen shake
+    body.classList.add('shake');
+    setTimeout(() => body.classList.remove('shake'), 500);
+    
+    // Create diamond explosion
+    createExplosion('💎', 25, '#8b0000');
+    
+    // Sound effect (visual representation)
+    flashScreen('#8b0000');
+});
+
+// Create particle explosion
+function createExplosion(emoji, count, color) {
+    for (let i = 0; i < count; i++) {
         setTimeout(() => {
-            createRocket();
-        }, i * 100);
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.textContent = emoji;
+            
+            // Random position from center
+            const angle = (Math.PI * 2 * i) / count;
+            const velocity = 200 + Math.random() * 300;
+            const tx = Math.cos(angle) * velocity;
+            const ty = Math.sin(angle) * velocity;
+            
+            particle.style.setProperty('--tx', `${tx}px`);
+            particle.style.setProperty('--ty', `${ty}px`);
+            particle.style.left = '50%';
+            particle.style.top = '50%';
+            particle.style.color = color;
+            
+            explosion.appendChild(particle);
+            
+            // Remove particle after animation
+            setTimeout(() => {
+                particle.remove();
+            }, 2000);
+        }, i * 30);
     }
-    
-    // Show phrase
-    memePhrase.textContent = "🚀 TO THE MOON! 🚀";
-    memePhrase.classList.add('show');
-    setTimeout(() => {
-        memePhrase.classList.remove('show');
-    }, 2000);
-});
+}
 
-// HODL Button
-const hodlButton = document.querySelector('.btn-secondary');
-hodlButton.addEventListener('click', function() {
-    memePhrase.textContent = "💎 DIAMOND HANDS ACTIVATED! 💎";
-    memePhrase.classList.add('show');
-    setTimeout(() => {
-        memePhrase.classList.remove('show');
-    }, 2000);
+// Flash screen effect
+function flashScreen(color) {
+    const flash = document.createElement('div');
+    flash.style.position = 'fixed';
+    flash.style.top = '0';
+    flash.style.left = '0';
+    flash.style.width = '100%';
+    flash.style.height = '100%';
+    flash.style.background = color;
+    flash.style.opacity = '0';
+    flash.style.pointerEvents = 'none';
+    flash.style.zIndex = '999';
+    flash.style.transition = 'opacity 0.3s ease';
     
-    // Create diamonds
-    for (let i = 0; i < 15; i++) {
-        createDiamond();
-    }
-});
-
-// Create rocket
-function createRocket() {
-    const rocket = document.createElement('div');
-    rocket.textContent = '🚀';
-    rocket.style.position = 'fixed';
-    rocket.style.fontSize = '3rem';
-    rocket.style.left = Math.random() * window.innerWidth + 'px';
-    rocket.style.bottom = '-100px';
-    rocket.style.transition = 'all 2s ease-out';
-    rocket.style.zIndex = '9999';
-    document.body.appendChild(rocket);
+    document.body.appendChild(flash);
     
+    // Trigger flash
     setTimeout(() => {
-        rocket.style.bottom = window.innerHeight + 100 + 'px';
-        rocket.style.opacity = '0';
+        flash.style.opacity = '0.3';
     }, 10);
     
     setTimeout(() => {
-        rocket.remove();
-    }, 2100);
-}
-
-// Create diamond
-function createDiamond() {
-    const diamond = document.createElement('div');
-    diamond.textContent = '💎';
-    diamond.style.position = 'fixed';
-    diamond.style.fontSize = '2rem';
-    diamond.style.left = Math.random() * window.innerWidth + 'px';
-    diamond.style.top = '-100px';
-    diamond.style.transition = 'all 3s ease-in';
-    diamond.style.zIndex = '9999';
-    document.body.appendChild(diamond);
+        flash.style.opacity = '0';
+    }, 200);
     
     setTimeout(() => {
-        diamond.style.top = window.innerHeight + 100 + 'px';
-        diamond.style.transform = 'rotate(720deg)';
-        diamond.style.opacity = '0';
-    }, 10);
-    
-    setTimeout(() => {
-        diamond.remove();
-    }, 3100);
+        flash.remove();
+    }, 500);
 }
 
-// Card animations on scroll
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
-};
-
-const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
+// Bull logo click effect
+const bullLogo = document.querySelector('.bull-logo');
+if (bullLogo) {
+    bullLogo.addEventListener('click', function() {
+        // Spin and glow
+        this.style.transform = 'scale(1.2) rotate(360deg)';
+        this.style.filter = 'drop-shadow(0 0 80px rgba(255, 0, 0, 1))';
+        
+        // Create mini explosion
+        createExplosion('🐂', 15, '#ff0000');
+        
+        setTimeout(() => {
+            this.style.transform = '';
+            this.style.filter = '';
+        }, 600);
     });
-}, observerOptions);
+}
 
-// Observe all cards
-document.querySelectorAll('.reason-card, .token-card, .roadmap-item').forEach(card => {
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(50px)';
-    card.style.transition = 'all 0.6s ease-out';
-    observer.observe(card);
-});
+// Random floating emojis in background
+function createFloatingEmoji() {
+    const emojis = ['🔥', '💪', '⚡', '🚀', '💎'];
+    const emoji = emojis[Math.floor(Math.random() * emojis.length)];
+    
+    const floating = document.createElement('div');
+    floating.textContent = emoji;
+    floating.style.position = 'fixed';
+    floating.style.fontSize = '2rem';
+    floating.style.left = Math.random() * 100 + '%';
+    floating.style.top = '-50px';
+    floating.style.opacity = '0.2';
+    floating.style.pointerEvents = 'none';
+    floating.style.zIndex = '1';
+    floating.style.transition = 'all 10s linear';
+    
+    document.body.appendChild(floating);
+    
+    setTimeout(() => {
+        floating.style.top = '110vh';
+        floating.style.transform = `rotate(${Math.random() * 360}deg)`;
+    }, 100);
+    
+    setTimeout(() => {
+        floating.remove();
+    }, 10000);
+}
 
-console.log('🐂 BULLPOWER ACTIVATED! 🐂');
-console.log('Ready to go TO THE MOON! 🚀');
+// Create floating emojis periodically
+setInterval(createFloatingEmoji, 2000);
 
+// Initial floating emojis
+for (let i = 0; i < 5; i++) {
+    setTimeout(createFloatingEmoji, i * 400);
+}
+
+console.log('🐂 BULLPOWER ACTIVATED! 🚀');
+console.log('PUMP IT! 💎');
