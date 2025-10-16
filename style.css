@@ -13,16 +13,15 @@ body {
         radial-gradient(circle at 40% 20%, rgba(255, 50, 50, 0.1) 0%, transparent 50%);
     color: #fff;
     min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    position: relative;
+    padding: 2rem 0;
+    overflow-x: hidden;
 }
 
 .container {
     text-align: center;
     padding: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
     position: relative;
     z-index: 10;
 }
@@ -44,15 +43,17 @@ body {
     filter: drop-shadow(0 0 20px rgba(255, 0, 0, 0.8));
 }
 
-/* Logo */
+/* Logo - КРУГЛАЯ! */
 .logo {
     margin-bottom: 2rem;
 }
 
 .bull-logo {
-    width: 300px;
-    height: 300px;
-    object-fit: contain;
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid #ff0000;
     filter: drop-shadow(0 0 40px rgba(255, 0, 0, 0.6));
     animation: float 4s ease-in-out infinite;
     cursor: pointer;
@@ -60,7 +61,8 @@ body {
 }
 
 .bull-logo:hover {
-    transform: scale(1.1) rotate(5deg);
+    transform: scale(1.1);
+    border-color: #ff3333;
     filter: drop-shadow(0 0 60px rgba(255, 0, 0, 0.9));
 }
 
@@ -69,15 +71,15 @@ body {
         transform: translateY(0px);
     }
     50% {
-        transform: translateY(-20px);
+        transform: translateY(-15px);
     }
 }
 
 /* Title */
 .title {
-    font-size: 6rem;
+    font-size: 5rem;
     font-weight: 900;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
     background: linear-gradient(45deg, #ff0000, #ff3333, #cc0000, #ff0000);
     background-size: 300% 300%;
     -webkit-background-clip: text;
@@ -94,17 +96,86 @@ body {
     100% { background-position: 0% 50%; }
 }
 
+/* Story Section */
+.story {
+    margin: 3rem 0;
+    text-align: left;
+}
+
+.story-chapter {
+    background: rgba(139, 0, 0, 0.3);
+    border: 2px solid #ff0000;
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+}
+
+.story-chapter:hover {
+    background: rgba(139, 0, 0, 0.5);
+    border-color: #ff3333;
+    transform: translateX(10px);
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.4);
+}
+
+.story-chapter h2 {
+    color: #ff3333;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+.story-chapter p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #fff;
+    font-family: Arial, sans-serif;
+}
+
+/* Moral Section */
+.moral {
+    background: linear-gradient(135deg, rgba(255, 0, 0, 0.2), rgba(139, 0, 0, 0.3));
+    border: 3px solid #ff0000;
+    border-radius: 20px;
+    padding: 2.5rem;
+    margin: 3rem 0;
+    box-shadow: 0 0 40px rgba(255, 0, 0, 0.5);
+}
+
+.moral h2 {
+    color: #ff0000;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+}
+
+.moral p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+    font-family: Arial, sans-serif;
+}
+
+.highlight {
+    color: #ff3333;
+    font-size: 1.5rem !important;
+    font-weight: 900;
+    margin-top: 1.5rem !important;
+    text-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
+}
+
 /* Buttons */
 .buttons {
     display: flex;
-    gap: 3rem;
+    gap: 2rem;
     justify-content: center;
     flex-wrap: wrap;
+    margin-top: 3rem;
 }
 
 .btn {
-    padding: 2.5rem 5rem;
-    font-size: 3rem;
+    padding: 2rem 4rem;
+    font-size: 2rem;
     font-weight: 900;
     border: none;
     border-radius: 20px;
@@ -114,7 +185,7 @@ body {
     position: relative;
     overflow: hidden;
     letter-spacing: 0.1em;
-    min-width: 300px;
+    min-width: 280px;
 }
 
 .btn::before {
@@ -140,8 +211,7 @@ body {
     color: white;
     box-shadow: 
         0 0 40px rgba(255, 0, 0, 0.6),
-        0 0 80px rgba(255, 0, 0, 0.4),
-        inset 0 0 40px rgba(255, 50, 50, 0.2);
+        0 0 80px rgba(255, 0, 0, 0.4);
     animation: pumpPulse 2s ease-in-out infinite;
 }
 
@@ -149,22 +219,19 @@ body {
     transform: translateY(-10px) scale(1.05);
     box-shadow: 
         0 0 60px rgba(255, 0, 0, 0.9),
-        0 0 120px rgba(255, 0, 0, 0.6),
-        inset 0 0 60px rgba(255, 50, 50, 0.3);
+        0 0 120px rgba(255, 0, 0, 0.6);
 }
 
 @keyframes pumpPulse {
     0%, 100% {
         box-shadow: 
             0 0 40px rgba(255, 0, 0, 0.6),
-            0 0 80px rgba(255, 0, 0, 0.4),
-            inset 0 0 40px rgba(255, 50, 50, 0.2);
+            0 0 80px rgba(255, 0, 0, 0.4);
     }
     50% {
         box-shadow: 
             0 0 60px rgba(255, 0, 0, 0.8),
-            0 0 100px rgba(255, 0, 0, 0.5),
-            inset 0 0 50px rgba(255, 50, 50, 0.3);
+            0 0 100px rgba(255, 0, 0, 0.5);
     }
 }
 
@@ -173,8 +240,7 @@ body {
     color: white;
     box-shadow: 
         0 0 40px rgba(139, 0, 0, 0.6),
-        0 0 80px rgba(139, 0, 0, 0.4),
-        inset 0 0 40px rgba(180, 0, 0, 0.2);
+        0 0 80px rgba(139, 0, 0, 0.4);
     border: 3px solid #ff0000;
 }
 
@@ -183,8 +249,7 @@ body {
     background: linear-gradient(135deg, #a00000, #6b0000);
     box-shadow: 
         0 0 60px rgba(139, 0, 0, 0.9),
-        0 0 120px rgba(139, 0, 0, 0.6),
-        inset 0 0 60px rgba(180, 0, 0, 0.3);
+        0 0 120px rgba(139, 0, 0, 0.6);
     border-color: #ff3333;
 }
 
@@ -238,12 +303,36 @@ body.shake {
 /* Responsive */
 @media (max-width: 768px) {
     .title {
-        font-size: 3.5rem;
+        font-size: 3rem;
     }
     
     .bull-logo {
-        width: 200px;
-        height: 200px;
+        width: 180px;
+        height: 180px;
+    }
+    
+    .story-chapter {
+        padding: 1.5rem;
+    }
+    
+    .story-chapter h2 {
+        font-size: 1.4rem;
+    }
+    
+    .story-chapter p {
+        font-size: 1rem;
+    }
+    
+    .moral {
+        padding: 1.5rem;
+    }
+    
+    .moral h2 {
+        font-size: 1.8rem;
+    }
+    
+    .moral p {
+        font-size: 1rem;
     }
     
     .buttons {
@@ -254,7 +343,7 @@ body.shake {
     
     .btn {
         padding: 1.5rem 3rem;
-        font-size: 2rem;
+        font-size: 1.5rem;
         min-width: 250px;
     }
     
@@ -266,7 +355,7 @@ body.shake {
 
 @media (max-width: 480px) {
     .title {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
     }
     
     .bull-logo {
@@ -274,9 +363,25 @@ body.shake {
         height: 150px;
     }
     
+    .story-chapter {
+        padding: 1rem;
+    }
+    
+    .story-chapter h2 {
+        font-size: 1.2rem;
+    }
+    
+    .story-chapter p {
+        font-size: 0.9rem;
+    }
+    
+    .moral h2 {
+        font-size: 1.5rem;
+    }
+    
     .btn {
         padding: 1.2rem 2.5rem;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
         min-width: 200px;
     }
     

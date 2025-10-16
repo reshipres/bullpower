@@ -3,9 +3,34 @@ const pumpBtn = document.getElementById('pumpBtn');
 const hodlBtn = document.getElementById('hodlBtn');
 const explosion = document.getElementById('explosion');
 const body = document.body;
+const bullSound = document.getElementById('bullSound');
+
+// Play bull sound
+function playBullSound() {
+    // Create a simple beep sound using Web Audio API
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    const oscillator = audioContext.createOscillator();
+    const gainNode = audioContext.createGain();
+    
+    oscillator.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+    
+    // Bull roar sound (low frequency)
+    oscillator.frequency.value = 80; // Low frequency for bull sound
+    oscillator.type = 'sawtooth';
+    
+    gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+    
+    oscillator.start(audioContext.currentTime);
+    oscillator.stop(audioContext.currentTime + 0.5);
+}
 
 // PUMP button effect
 pumpBtn.addEventListener('click', function() {
+    // Play sound
+    playBullSound();
+    
     // Screen shake
     body.classList.add('shake');
     setTimeout(() => body.classList.remove('shake'), 500);
@@ -19,6 +44,9 @@ pumpBtn.addEventListener('click', function() {
 
 // HODL button effect
 hodlBtn.addEventListener('click', function() {
+    // Play sound
+    playBullSound();
+    
     // Screen shake
     body.classList.add('shake');
     setTimeout(() => body.classList.remove('shake'), 500);
@@ -94,6 +122,9 @@ function flashScreen(color) {
 const bullLogo = document.querySelector('.bull-logo');
 if (bullLogo) {
     bullLogo.addEventListener('click', function() {
+        // Play sound
+        playBullSound();
+        
         // Spin and glow
         this.style.transform = 'scale(1.2) rotate(360deg)';
         this.style.filter = 'drop-shadow(0 0 80px rgba(255, 0, 0, 1))';
@@ -108,9 +139,21 @@ if (bullLogo) {
     });
 }
 
+// Story chapters click sound
+const storyChapters = document.querySelectorAll('.story-chapter');
+storyChapters.forEach(chapter => {
+    chapter.addEventListener('click', function() {
+        playBullSound();
+        this.style.transform = 'scale(1.02)';
+        setTimeout(() => {
+            this.style.transform = '';
+        }, 200);
+    });
+});
+
 // Random floating emojis in background
 function createFloatingEmoji() {
-    const emojis = ['🔥', '💪', '⚡', '🚀', '💎'];
+    const emojis = ['🔥', '💪', '⚡', '💔', '💎', '🐂'];
     const emoji = emojis[Math.floor(Math.random() * emojis.length)];
     
     const floating = document.createElement('div');
@@ -144,5 +187,5 @@ for (let i = 0; i < 5; i++) {
     setTimeout(createFloatingEmoji, i * 400);
 }
 
-console.log('🐂 BULLPOWER ACTIVATED! 🚀');
-console.log('PUMP IT! 💎');
+console.log('🐂 BULLPOWER - FROM HEARTBREAK TO MOONSHOTS! 🚀');
+console.log('The story of transformation. The power of the grind. 💪');
